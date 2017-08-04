@@ -1,0 +1,53 @@
+'.source.json':
+  'jshint':
+    'prefix': 'jshint'
+    'body': """
+{
+  "node": true,
+  "esversion": 6,
+  "mocha": true,
+  "noyield": true
+}
+"""
+  'eslint':
+    'prefix': 'eslint'
+    'body': """
+{
+  "env": {
+    "browser": false,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-unused-vars": [1, {"vars": "all", "args": "none"}],
+    "no-console": [ 0 ]
+  }
+}
+"""
+  'pm2':
+    'prefix': 'pm2'
+    'body': """
+{
+  "apps" : [{
+    "name"        : "seek",
+    "script"      : "./index.js",
+    "watch"       : true,
+		"ignore_watch": ["node_modules", "static", ".git"],
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+       "NODE_ENV": "production"
+    },
+		"node_args": "--inspect=7000"
+  }]
+}
+"""
